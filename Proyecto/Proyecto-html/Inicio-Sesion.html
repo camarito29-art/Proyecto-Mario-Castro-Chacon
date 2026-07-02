@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión - Sistema de Gestión de Egresados CENFOTEC</title>
+
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/generico.css">
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/registro-usuario.css">
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="/Proyecto/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
+
+        <nav class="navegacion-principal" aria-label="Navegación principal">
+            <ul>
+                <li><a href="Pagina-Inicio.html">Inicio</a></li>
+                <li><a href="Inicio-Sesion.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+
+        <header>
+            <h2>Inicio de sesión</h2>
+            <p class="subtitulo">Ingrese sus credenciales para acceder al sistema.</p>
+        </header>
+        <hr>
+        <form action="">
+            <!-- Correo electrónico -->
+            <div>
+                <label for="correo">Correo electrónico</label>
+                <span aria-hidden="true" class="label-requerido">*</span>
+
+                <div>
+                    <input type="email" id="correo" placeholder="usuario@ucenfotec.ac.cr" required aria-required="true"
+                        aria-describedby="ayuda-correo">
+
+                    <span id="ayuda-correo" class="texto-oculto">Ingrese su correo institucional (ej.
+                        usuario@ucenfotec.ac.cr).</span>
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div>
+                <label for="contrasenna">Contraseña</label>
+                <span aria-hidden="true" class="label-requerido">*</span>
+
+                <div>
+                    <input type="password" id="contrasenna" required aria-required="true"
+                        aria-describedby="ayuda-contrasenna">
+
+                    <span id="ayuda-contrasenna" class="texto-oculto">Ingrese su contraseña.</span>
+                </div>
+            </div>
+
+            <button type="submit" id="btnIniciarSesion" class="guardar-formulario">Ingresar</button>
+
+        </form>
+
+    </main>
+    <hr>
+    <footer>
+        <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+<script src="/Proyecto/Proyecto-JS/Inicio-Sesion.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de carreras - Sistema de Gestión de Egresados CENFOTEC</title>
+
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/generico.css">
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/registro-usuario.css">
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="/Proyecto/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
+
+        <nav class="navegacion-principal" aria-label="Navegación principal">
+            <ul>
+                <li><a href="Pagina-Inicio.html">Inicio</a></li>
+                <li><a href="Gestion-Egresados.html">Gestión de egresados</a></li>
+                <li><a href="Gestion-Carreras.html">Gestión de carreras</a></li>
+                <li><a href="Inicio-Sesion.html">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+
+        <!-- Listado de carreras -->
+        <section aria-labelledby="titulo-lista-carreras">
+            <header>
+                <h2 id="titulo-lista-carreras">Carreras registradas</h2>
+                <p class="subtitulo">Listado de todas las carreras disponibles en el sistema.</p>
+            </header>
+
+            <table class="table">
+                <caption>Lista de carreras registradas</caption>
+
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre de la carrera</th>
+                        <th>Descripción</th>
+                        <th>Duración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IS-01</td>
+                        <td>Ingeniería en Sistemas de Información</td>
+                        <td>Carrera enfocada en el diseño y desarrollo de sistemas de información empresariales.</td>
+                        <td>4 años</td>
+                    </tr>
+                    <tr>
+                        <td>SW-01</td>
+                        <td>Ingeniería en Software</td>
+                        <td>Carrera orientada al desarrollo y gestión de proyectos de software.</td>
+                        <td>4 años</td>
+                    </tr>
+                    <tr>
+                        <td>RT-01</td>
+                        <td>Ingeniería en Redes y Telecomunicaciones</td>
+                        <td>Carrera especializada en infraestructura de redes y telecomunicaciones.</td>
+                        <td>4 años</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- Formulario de registro de carrera -->
+        <section aria-labelledby="titulo-registro-carrera">
+            <header>
+                <h2 id="titulo-registro-carrera">Registrar nueva carrera</h2>
+                <p class="subtitulo">Complete todos los campos obligatorios para registrar la carrera.</p>
+            </header>
+
+            <form action="" novalidate>
+
+                <!-- Código de la carrera -->
+                <div>
+                    <label for="codigo-carrera">Código de la carrera</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="text" id="codigo-carrera" placeholder="ej. IS-01" required aria-required="true"
+                            aria-describedby="ayuda-codigo-carrera">
+
+                        <span id="ayuda-codigo-carrera" class="texto-oculto">Ingrese el código único de la carrera (ej.
+                            IS-01).</span>
+                    </div>
+                </div>
+
+                <!-- Nombre de la carrera -->
+                <div>
+                    <label for="nombre-carrera">Nombre de la carrera</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="text" id="nombre-carrera" placeholder="ej. Ingeniería en Software" required
+                            aria-required="true" aria-describedby="ayuda-nombre-carrera">
+
+                        <span id="ayuda-nombre-carrera" class="texto-oculto">Ingrese el nombre completo de la carrera
+                            (mínimo 5 caracteres).</span>
+                    </div>
+                </div>
+
+                <!-- Descripción -->
+                <div>
+                    <label for="descripcion-carrera">Descripción</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <textarea id="descripcion-carrera" placeholder="Describa el enfoque y objetivos de la carrera."
+                            required aria-required="true" aria-describedby="ayuda-descripcion-carrera"></textarea>
+
+                        <span id="ayuda-descripcion-carrera" class="texto-oculto">Ingrese una descripción de la carrera
+                            (mínimo 10 caracteres).</span>
+                    </div>
+                </div>
+
+                <!-- Duración -->
+                <div>
+                    <label for="duracion-carrera">Duración</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="text" id="duracion-carrera" placeholder="ej. 4 años" required aria-required="true"
+                            aria-describedby="ayuda-duracion-carrera">
+
+                        <span id="ayuda-duracion-carrera" class="texto-oculto">Ingrese la duración de la carrera (ej. 4
+                            años).</span>
+                    </div>
+                </div>
+
+                <!-- Modalidad -->
+                <div>
+                    <label for="modalidad-carrera">Modalidad</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <select id="modalidad-carrera" required aria-required="true"
+                            aria-describedby="ayuda-modalidad-carrera">
+                            <option value="">Seleccione una modalidad</option>
+                            <option value="presencial">Presencial</option>
+                            <option value="virtual">Virtual</option>
+                            <option value="hibrida">Híbrida</option>
+                        </select>
+
+                        <span id="ayuda-modalidad-carrera" class="texto-oculto">Seleccione la modalidad en la que se
+                            imparte la carrera.</span>
+                    </div>
+                </div>
+                <br>
+                <!-- Activa 
+                <div>
+                    <label for="activa-carrera">¿Carrera activa?</label>
+                    <span class="label-opcional">(opcional)</span>
+
+                    <div>
+                        <input type="checkbox" id="activa-carrera" aria-describedby="ayuda-activa-carrera">
+
+                        <span id="ayuda-activa-carrera" class="texto-oculto">Marque esta casilla si la carrera se
+                            encuentra actualmente activa.</span>
+                    </div>
+                </div> -->
+
+                <button type="submit" class="guardar-formulario">Registrar carrera</button>
+                <button type="reset" class="limpiar-formulario">Limpiar formulario</button>
+
+            </form>
+        </section>
+        <hr>
+    </main>
+
+    <footer>
+        <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
