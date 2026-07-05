@@ -185,15 +185,13 @@ ul li a {
     width: 100px;
     height: 100px;
     float: auto;
-  clip-path: circle(40%);
+  clip-path: circle(45%);
   shape-outside: circle(45%);
 }
 .navegacion-principal{
   list-style-type: none;
-  margin-top: 1px;
-  padding: 0;
+  margin-top: 2px;
   overflow: hidden;
-  background-color: #333333;
   float: right;
   display: block;
   color: white;
