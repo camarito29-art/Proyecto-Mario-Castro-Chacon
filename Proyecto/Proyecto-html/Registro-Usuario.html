@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuario - Sistema de Gestión de Egresados CENFOTEC</title>
+
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/generico.css">
+    <link rel="stylesheet" href="/Proyecto/Proyecto-css/registro-usuario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="/Proyecto/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
+    </header>
+    <hr>
+
+    <main>
+        <header>
+            <h2>Registro de usuario</h2>
+            <p class="subtitulo">Complete los campos para crear su cuenta.</p>
+        </header>
+        <hr>
+
+        <form action="" novalidate>
+
+            <!-- Nombre de usuario -->
+            <div>
+                <label for="nombre-usuario">Nombre completo</label>
+                <span aria-hidden="true" class="label-requerido">*</span>
+
+                <div>
+                    <input type="text" id="nombre-usuario" placeholder="ej. María Pérez" required aria-required="true"
+                        aria-describedby="ayuda-nombre-usuario">
+
+                    <span id="ayuda-nombre-usuario" class="texto-oculto">Ingrese su nombre completo (mínimo 2
+                        caracteres).</span>
+                </div>
+            </div>
+
+            <!-- Correo -->
+            <div>
+                <label for="correo">Correo electrónico</label>
+                <span aria-hidden="true" class="label-requerido">*</span>
+
+                <div>
+                    <input type="email" id="correo" placeholder="usuario@ucenfotec.ac.cr" required aria-required="true"
+                        aria-describedby="ayuda-correo">
+
+                    <span id="ayuda-correo" class="texto-oculto">Ingrese un correo electrónico válido.</span>
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div>
+                <label for="contrasenna">Contraseña</label>
+                <span aria-hidden="true" class="label-requerido">*</span>
+
+                <div>
+                    <input type="password" id="contrasenna" required aria-required="true"
+                        aria-describedby="ayuda-contrasenna">
+
+                    <span id="ayuda-contrasenna" class="texto-oculto">Ingrese una contraseña.</span>
+
+                    <!-- Botón mostrar/ocultar contraseña -->
+                    <button type="button" id="btnMostrarContrasenna" aria-label="Mostrar contraseña"
+                        aria-pressed="false">
+                        <i id="iconoContrasenna" class="fa-solid fa-eye" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" id="guardar-usuario-ls" class="guardar-formulario">Crear cuenta</button>
+            <button type="reset" class="limpiar-formulario">Limpiar formulario</button>
+
+        </form>
+        <br>
+        <p>¿Ya tenés cuenta? <a href="Inicio-Sesion.html">Iniciar sesión</a></p>
+    </main>
+    <hr>
+
+    <footer>
+        <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Proyecto/Proyecto-js/registro-usuario.js"></script>
+</body>
+
+</html>
