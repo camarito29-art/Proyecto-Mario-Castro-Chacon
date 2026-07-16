@@ -1,4 +1,5 @@
 /* Seleccionar los elementos del DOM */
+
 const inputCodigo       = document.getElementById("codigo-carrera");
 const inputNombre       = document.getElementById("nombre-carrera");
 const inputDescripcion  = document.getElementById("descripcion-carrera");
@@ -8,29 +9,69 @@ const inputActiva       = document.getElementById("activa-carrera");
 
 const btnRegistrarCarrera = document.querySelector(".guardar-formulario");
 
-/* ── Funciones de validación ── */
+/* Para mostrar los mensajes de error de cada campo */
+
+const errorCodigo      = document.getElementById("error-codigo-carrera");
+const errorNombre      = document.getElementById("error-nombre-carrera");
+const errorDescripcion = document.getElementById("error-descripcion-carrera");
+const errorDuracion    = document.getElementById("error-duracion-carrera");
+const errorModalidad   = document.getElementById("error-modalidad-carrera");
+
+
+//Regex
+
+// Código de carrera:
+
+const regexCodigo = /^[A-Za-z]{2,4}-\d{2,3}$/;
+
+// Nombre de carrera:
+
+const regexNombre = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{5,}$/;
+
+// Duración:
+
+const regexDuracion = /^\d{1,2}\s?(año|años|semestre|semestres)$/i;
+
+//Validaciones Regex
 
 function validarCodigo(codigo) {
-    return codigo.length >= 2;
+    return regexCodigo.test(codigo);
 }
 
+
 function validarNombre(nombre) {
-    return nombre.length >= 5;
+    return nombre.length >= 5 && regexNombre.test(nombre);
 }
+
 
 function validarDescripcion(descripcion) {
     return descripcion.length >= 10;
 }
 
+
 function validarDuracion(duracion) {
-    return duracion.trim() !== "";
+    return regexDuracion.test(duracion.trim());
 }
+
 
 function validarModalidad(modalidad) {
     return modalidad !== "";
 }
 
-// Resaltar campos con error 
+
+// Mostrar / limpiar mensajes de error
+
+function mostrarError(input, elementoError, mensaje) {
+    input.classList.add("input-error");
+    elementoError.textContent = mensaje;
+}
+
+function limpiarError(input, elementoError) {
+    input.classList.remove("input-error");
+    elementoError.textContent = "";
+}
+
+// Resaltar campos con error y mostrar el mensaje correspondiente
 
 function resaltarCamposVacios() {
     let error = false;
@@ -38,60 +79,62 @@ function resaltarCamposVacios() {
     // Código
     const codigo = inputCodigo.value.trim();
     if (!validarCodigo(codigo)) {
-        inputCodigo.classList.add("input-error");
+        mostrarError(inputCodigo, errorCodigo, "El código debe tener el formato AA-00 (ej. IS-01).");
         error = true;
     } else {
-        inputCodigo.classList.remove("input-error");
+        limpiarError(inputCodigo, errorCodigo);
     }
 
     // Nombre
     const nombre = inputNombre.value.trim();
     if (!validarNombre(nombre)) {
-        inputNombre.classList.add("input-error");
+        mostrarError(inputNombre, errorNombre, "El nombre debe tener mínimo 5 letras y no contener números.");
         error = true;
     } else {
-        inputNombre.classList.remove("input-error");
+        limpiarError(inputNombre, errorNombre);
     }
+
 
     // Descripción
     const descripcion = inputDescripcion.value.trim();
     if (!validarDescripcion(descripcion)) {
-        inputDescripcion.classList.add("input-error");
+        mostrarError(inputDescripcion, errorDescripcion, "La descripción debe tener mínimo 10 caracteres.");
         error = true;
     } else {
-        inputDescripcion.classList.remove("input-error");
+        limpiarError(inputDescripcion, errorDescripcion);
     }
 
     // Duración
     const duracion = inputDuracion.value.trim();
     if (!validarDuracion(duracion)) {
-        inputDuracion.classList.add("input-error");
+        mostrarError(inputDuracion, errorDuracion, "La duración debe tener formato número + año(s)/semestre(s) (ej. 4 años).");
         error = true;
     } else {
-        inputDuracion.classList.remove("input-error");
+        limpiarError(inputDuracion, errorDuracion);
     }
 
     // Modalidad
     const modalidad = inputModalidad.value;
     if (!validarModalidad(modalidad)) {
-        inputModalidad.classList.add("input-error");
+        mostrarError(inputModalidad, errorModalidad, "Debe seleccionar una modalidad.");
         error = true;
     } else {
-        inputModalidad.classList.remove("input-error");
+        limpiarError(inputModalidad, errorModalidad);
     }
 
     return error;
 }
 
+
 // Guardar carrera
+
 
 function guardarCarrera() {
     const error = resaltarCamposVacios();
-
     if (error) {
         Swal.fire({
             title: "No se puede registrar la carrera",
-            text: "Complete los campos resaltados.",
+            text: "Complete correctamente los campos resaltados.",
             icon: "warning",
             confirmButtonText: "Aceptar"
         });
@@ -141,6 +184,7 @@ function guardarCarrera() {
     }).then(function () {
         // Limpiar
         document.querySelector("form").reset();
+        cargarCarreras();
     });
 }
 

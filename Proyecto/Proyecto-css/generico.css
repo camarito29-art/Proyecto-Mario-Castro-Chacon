@@ -54,19 +54,19 @@ h1 {
     color: var(--azul);
 }
 
-h2{
+h2 {
     font-size: 1.25rem;
     margin-bottom: 0.3rem;
     color: var(--negro);
 }
 
-h3{
+h3 {
     font-size: 1.1rem;
     margin-bottom: 0.2rem;
     color: var(--azul);
 }
 
-h4{
+h4 {
     font-size: 1rem;
     margin-bottom: 0.1rem;
     color: var(--ceslesteOscuro);
@@ -78,9 +78,41 @@ h4{
     font-size: 0.95rem;
 }
 
+/* Cada campo del formulario envuelto en <article> */
+.campo-formulario {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
 input {
     margin-top: 0.2em;
-    margin-bottom: 1.2em;
+    margin-bottom: 0.3em;
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    border: 2px solid var(--gris);
+    border-radius: 7px;
+    background: #ffffff;
+    color: var(--negro);
+}
+
+textarea {
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    border: 2px solid var(--gris);
+    border-radius: 7px;
+    background: #ffffff;
+    color: var(--negro);
+    min-height: 80px;
+    resize: vertical;
+}
+
+select {
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
     width: 100%;
     padding: 5px;
     font-size: 1rem;
@@ -91,7 +123,11 @@ input {
 }
 
 input:active,
-input:focus {
+input:focus,
+textarea:active,
+textarea:focus,
+select:active,
+select:focus {
     outline: none;
     border-color: var(--azul);
 }
@@ -114,6 +150,16 @@ label {
 
 .texto-oculto {
     display: none;
+}
+
+/* Mensaje de error visible */
+.mensaje-error {
+    display: block;
+    min-height: 1.1em;
+    color: var(--rojo);
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
 }
 
 .guardar-formulario {
@@ -158,46 +204,48 @@ td {
     border-width: 2px;
     border-color: var(--celeste);
     font-size: 0.6rem;
-    
+
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: var(--azul);
-  font-size: 0.6rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--azul);
+    font-size: 0.6rem;
 }
 
 ul li {
-  float: left;
+    float: left;
 }
 
 ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-.logo{
+
+.logo {
     width: 100px;
     height: 100px;
     float: auto;
-  clip-path: circle(45%);
-  shape-outside: circle(45%);
+    clip-path: circle(45%);
+    shape-outside: circle(45%);
 }
-.navegacion-principal{
-  list-style-type: none;
-  margin-top: 2px;
-  overflow: hidden;
-  float: right;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 2px 2px;
-  background-color: #111111;
+
+.navegacion-principal {
+    list-style-type: none;
+    margin-top: 2px;
+    overflow: hidden;
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 2px 2px;
+    background-color: #111111;
 }
 
 hr {
