@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de carreras - Sistema de Gestión de Egresados CENFOTEC</title>
-
+ 
     <link rel="stylesheet" href="/Proyecto/Proyecto-css/generico.css">
     <link rel="stylesheet" href="/Proyecto/Proyecto-css/registro-usuario.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-
+ 
 <body>
-
+ 
     <header>
         <img class="logo" src="/Proyecto/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
-
+ 
         <nav class="navegacion-principal" aria-label="Navegación principal">
             <ul>
                 <li><a href="Pagina-Inicio.html">Inicio</a></li>
@@ -27,134 +27,117 @@
     </header>
     <hr>
     <main>
-
+ 
         <!-- Listado de carreras -->
         <section aria-labelledby="titulo-lista-carreras">
             <header>
                 <h2 id="titulo-lista-carreras">Carreras registradas</h2>
                 <p class="subtitulo">Listado de todas las carreras disponibles en el sistema.</p>
             </header>
-
+ 
             <article aria-label="Información sobre el listado de carreras">
-
+ 
                 <table class="table">
-
+ 
                     <caption>Lista de carreras registradas</caption>
-
-
+ 
+ 
                     <thead>
                         <tr>
                             <th>Código</th>
                             <th>Nombre de la carrera</th>
                             <th>Descripción</th>
                             <th>Duración</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>IS-01</td>
-                            <td>Ingeniería en Sistemas de Información</td>
-                            <td>Carrera enfocada en el diseño y desarrollo de sistemas de información empresariales.
-                            </td>
-                            <td>4 años</td>
-                        </tr>
-                        <tr>
-                            <td>SW-01</td>
-                            <td>Ingeniería en Software</td>
-                            <td>Carrera orientada al desarrollo y gestión de proyectos de software.</td>
-                            <td>4 años</td>
-                        </tr>
-                        <tr>
-                            <td>RT-01</td>
-                            <td>Ingeniería en Redes y Telecomunicaciones</td>
-                            <td>Carrera especializada en infraestructura de redes y telecomunicaciones.</td>
-                            <td>4 años</td>
-                        </tr>
+                       
                     </tbody>
                 </table>
             </article>
         </section>
-
+ 
         <hr>
-
+ 
         <!-- Formulario de registro de carrera -->
         <section aria-labelledby="titulo-registro-carrera">
             <header>
                 <h2 id="titulo-registro-carrera">Registrar nueva carrera</h2>
                 <p class="subtitulo">Complete todos los campos obligatorios para registrar la carrera.</p>
             </header>
-
+ 
             <form action="" novalidate>
-
+ 
                 <!-- Código de la carrera -->
                 <article class="campo-formulario">
                     <label for="codigo-carrera">Código de la carrera</label>
                     <span aria-hidden="true" class="label-requerido">*</span>
-
+ 
                     <div>
                         <input type="text" id="codigo-carrera" placeholder="ej. IS-01" required aria-required="true"
                             aria-describedby="ayuda-codigo-carrera error-codigo-carrera">
-
+ 
                         <span id="ayuda-codigo-carrera" class="texto-oculto">Ingrese el código único de la carrera (ej.
                             IS-01).</span>
-
+ 
                         <span id="error-codigo-carrera" class="mensaje-error" role="alert"></span>
                     </div>
                 </article>
-
+ 
                 <!-- Nombre de la carrera -->
                 <article class="campo-formulario">
                     <label for="nombre-carrera">Nombre de la carrera</label>
                     <span aria-hidden="true" class="label-requerido">*</span>
-
+ 
                     <div>
                         <input type="text" id="nombre-carrera" placeholder="ej. Ingeniería en Software" required
                             aria-required="true" aria-describedby="ayuda-nombre-carrera error-nombre-carrera">
-
+ 
                         <span id="ayuda-nombre-carrera" class="texto-oculto">Ingrese el nombre completo de la carrera
                             (mínimo 5 caracteres).</span>
-
+ 
                         <span id="error-nombre-carrera" class="mensaje-error" role="alert"></span>
                     </div>
                 </article>
-
+ 
                 <!-- Descripción -->
                 <article class="campo-formulario">
                     <label for="descripcion-carrera">Descripción</label>
                     <span aria-hidden="true" class="label-requerido">*</span>
-
+ 
                     <div>
                         <textarea id="descripcion-carrera" placeholder="Describa el enfoque y objetivos de la carrera."
                             required aria-required="true"
                             aria-describedby="ayuda-descripcion-carrera error-descripcion-carrera"></textarea>
-
+ 
                         <span id="ayuda-descripcion-carrera" class="texto-oculto">Ingrese una descripción de la carrera
                             (mínimo 10 caracteres).</span>
                         <span id="error-descripcion-carrera" class="mensaje-error" role="alert"></span>
                     </div>
                 </article>
-
+ 
                 <!-- Duración -->
                 <article class="campo-formulario">
                     <label for="duracion-carrera">Duración</label>
                     <span aria-hidden="true" class="label-requerido">*</span>
-
+ 
                     <div>
                         <input type="text" id="duracion-carrera" placeholder="ej. 4 años" required aria-required="true"
                             aria-describedby="ayuda-duracion-carrera error-duracion-carrera">
-
+ 
                         <span id="ayuda-duracion-carrera" class="texto-oculto">Ingrese la duración con formato numérico
                             seguido de "año(s)" o "semestre(s)" (ej. 4 años).</span>
-
+ 
                         <span id="error-duracion-carrera" class="mensaje-error" role="alert"></span>
                     </div>
                 </article>
-
+ 
                 <!-- Modalidad -->
                 <article class="campo-formulario">
                     <label for="modalidad-carrera">Modalidad</label>
                     <span aria-hidden="true" class="label-requerido">*</span>
-
+ 
                     <div>
                         <select id="modalidad-carrera" required aria-required="true"
                             aria-describedby="ayuda-modalidad-carrera error-modalidad-carrera">
@@ -163,7 +146,7 @@
                             <option value="virtual">Virtual</option>
                             <option value="hibrida">Híbrida</option>
                         </select>
-
+ 
                         <span id="ayuda-modalidad-carrera" class="texto-oculto">Seleccione la modalidad en la que se
                             imparte la carrera.</span>
                         <span id="error-modalidad-carrera" class="mensaje-error" role="alert"></span>
@@ -174,33 +157,33 @@
                 <article class="campo-formulario">
                     <label for="activa-carrera">¿Carrera activa?</label>
                     <span class="label-opcional">(opcional)</span>
-
+ 
                     <div>
                         <input type="checkbox" id="activa-carrera" aria-describedby="ayuda-activa-carrera">
-
+ 
                         <span id="ayuda-activa-carrera" class="texto-oculto">Marque esta casilla si la carrera se
                             encuentra actualmente activa.</span>
                     </div>
                 </article>
-
+ 
                 <button type="submit" class="guardar-formulario">Registrar carrera</button>
                 <button type="reset" class="limpiar-formulario">Limpiar formulario</button>
-
+ 
             </form>
         </section>
         <hr>
     </main>
-
+ 
     <footer>
         <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
     </footer>
-
-
+ 
+ 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+ 
     <!-- Lógica del formulario de carreras -->
     <script src="/Proyecto/Proyecto-js/gestion-carreras.js"></script>
 </body>
-
+ 
 </html>
