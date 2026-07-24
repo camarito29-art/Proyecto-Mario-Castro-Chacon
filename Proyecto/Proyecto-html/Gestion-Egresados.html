@@ -47,13 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>304790796</td>
-                        <td>Mario Castro Chacon</td>
-                        <td>mario@gmail.com</td>
-                        <td>Ingeniería en Desarrollo de Software</td>
-                        <td><a href="perfil-egresado.html">Ver perfil</a></td>
-                    </tr>
+
                 </tbody>
             </table>
         </section>
@@ -67,7 +61,7 @@
                 <p class="subtitulo">Complete todos los campos obligatorios para registrar al egresado.</p>
             </header>
 
-            <form action="">
+            <form action="" novalidate>
 
                 <!-- Identificación -->
                 <div>
@@ -76,10 +70,12 @@
 
                     <div>
                         <input type="text" id="identificacion" placeholder="ej. 123456789" required aria-required="true"
-                            aria-describedby="ayuda-identificacion">
+                            aria-describedby="ayuda-identificacion error-identificacion">
 
                         <span id="ayuda-identificacion" class="texto-oculto">Ingrese el número de identificación de 9
                             dígitos.</span>
+
+                        <span id="error-identificacion" class="mensaje-error" role="alert"></span>
                     </div>
                 </div>
 
@@ -90,10 +86,12 @@
 
                     <div>
                         <input type="text" id="nombre-completo" placeholder="ej. María Pérez" required
-                            aria-required="true" aria-describedby="ayuda-nombre">
+                            aria-required="true" aria-describedby="ayuda-nombre error-nombre-completo">
 
                         <span id="ayuda-nombre" class="texto-oculto">Ingrese el nombre completo (mínimo 3
                             caracteres).</span>
+
+                        <span id="error-nombre-completo" class="mensaje-error" role="alert"></span>
                     </div>
                 </div>
 
@@ -104,9 +102,11 @@
 
                     <div>
                         <input type="email" id="correo" placeholder="egresado@dominio.com" required aria-required="true"
-                            aria-describedby="ayuda-correo">
+                            aria-describedby="ayuda-correo error-correo">
 
                         <span id="ayuda-correo" class="texto-oculto">Ingrese un correo electrónico válido.</span>
+
+                        <span id="error-correo" class="mensaje-error" role="alert"></span>
                     </div>
                 </div>
 
@@ -117,10 +117,12 @@
 
                     <div>
                         <input type="tel" id="telefono" placeholder="ej. 88888888" required aria-required="true"
-                            aria-describedby="ayuda-telefono">
+                            aria-describedby="ayuda-telefono error-telefono">
 
                         <span id="ayuda-telefono" class="texto-oculto">Ingrese un número de teléfono de 8
                             dígitos.</span>
+
+                        <span id="error-telefono" class="mensaje-error" role="alert"></span>
                     </div>
                 </div>
 
@@ -130,7 +132,7 @@
                     <span aria-hidden="true" class="label-requerido">*</span>
 
                     <div>
-                        <select id="carrera" required aria-required="true" aria-describedby="ayuda-carrera">
+                        <select id="carrera" required aria-required="true" aria-describedby="ayuda-carrera error-carrera">
                             <option value="">Seleccione una carrera</option>
                             <option value="Ingeniería en Sistemas de Información">Ingeniería en Sistemas de Información</option>
                             <option value="Ingeniería en Desarrollo de Software">Ingeniería en Desarrollo de Software</option>
@@ -139,6 +141,8 @@
 
                         <span id="ayuda-carrera" class="texto-oculto">Seleccione la carrera que cursó el
                             egresado.</span>
+
+                        <span id="error-carrera" class="mensaje-error" role="alert"></span>
                     </div>
                 </div>
                 <br>

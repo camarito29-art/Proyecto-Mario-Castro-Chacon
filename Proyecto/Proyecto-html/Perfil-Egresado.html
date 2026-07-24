@@ -33,7 +33,7 @@
             <p class="subtitulo">Información personal y profesional del egresado.</p>
         </header>
         <hr>
-        <img class="logo" src="/Proyecto/Assets/yo.jpg" alt="Foto de perfil">
+        <i class="fa-solid fa-user" style="font-size: 100px;"></i>
         <p class="subtitulo">Imagen de perfil</p> 
         <!-- Datos personales -->
         <section aria-labelledby="titulo-datos-personales">
@@ -41,19 +41,19 @@
 
             <br>
             <h4>Identificación:</h4>
-            <p>304790796</p>
+            <p id="perfil-identificacion">304790796</p>
 
             <h4>Nombre completo:</h4>
-            <p>Mario Castro Chacon</p>
+            <p id="perfil-nombre">Mario Castro Chacon</p>
 
             <h4>Correo electrónico:</h4>
-            <p>mario@gmail.com</p>
+            <p id="perfil-correo">mario@gmail.com</p>
 
             <h4>Teléfono:</h4>
-            <p>7856-9825</p>
+            <p id="perfil-telefono">7856-9825</p>
 
             <h4>Fecha de registro:</h4>
-            <p>26 de Junio, 2026</p>
+            <p id="perfil-fecha">26 de Junio, 2026</p>
             </br>
         </section>
 
@@ -63,7 +63,7 @@
 
             <br>
             <h4>Nombre de la carrera:</h4>
-            <p>Ingeniería en Desarrollo de Software</p>
+            <p id="perfil-carrera">Ingeniería en Desarrollo de Software</p>
 
             <h4>Año de graduación:</h4>
             <p>2026</p>
@@ -74,18 +74,9 @@
         <section aria-labelledby="titulo-historial">
             <h3 id="titulo-historial">Historial laboral</h3>
             <br>
-
-            <h4>Empresa:</h4>
-            <p>Amazon</p>
-
-            <h4>Puesto:</h4>
-            <p>Technical Customer Support Agent</p>
-
-            <h4>Fecha de inicio:</h4>
-            <p>26 de febrero, 2026</p>
-
-            <h4>Fecha de fin:</h4>
-            <p>Actualmente trabajando</p>
+            <div id="perfil-historial">
+                <p>Amazon</p>
+            </div>
             </br>
 
         </section>
@@ -97,6 +88,9 @@
     <footer>
         <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Proyecto/Proyecto-js/perfil-egresado.js"></script>
 
 </body>
 

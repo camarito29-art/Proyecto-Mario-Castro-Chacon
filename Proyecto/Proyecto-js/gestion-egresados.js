@@ -5,39 +5,47 @@ const inputCorreo      = document.getElementById("correo");
 const inputTelefono    = document.getElementById("telefono");
 const inputCarrera     = document.getElementById("carrera");
 const inputFecha       = document.getElementById("fecha-registro");
-
+ 
 const btnRegistrar     = document.querySelector(".guardar-formulario");
-
+ 
+const errorCedula   = document.getElementById("error-identificacion");
+const errorNombre   = document.getElementById("error-nombre-completo");
+const errorCorreo   = document.getElementById("error-correo");
+const errorTelefono = document.getElementById("error-telefono");
+const errorCarrera  = document.getElementById("error-carrera");
+ 
 // Lugares de trabajo
 const lugaresContainer = document.getElementById("lugares-container");
 const btnAgregarLugar  = document.getElementById("agregar-lugar-btn");
-
+ 
 let contadorLugares = 0;
-
+ 
+let egresadoEditando = null;
+ 
 // Funciones de validación
-
+ 
 function validarCedula(cedula) {
     return /^[0-9]{9}$/.test(cedula);
 }
-
+ 
 function validarNombreCompleto(nombre) {
     return nombre.length >= 2;
 }
-
+ 
 function validarCorreo(correo) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
 }
-
+ 
 function validarTelefono(telefono) {
     return /^[0-9]{8,12}$/.test(telefono);
 }
-
+ 
 function validarCarrera(carrera) {
     return carrera !== "";
 }
-
+ 
 //Fecha actual 
-
+ 
 function establecerFechaActual() {
     const hoy  = new Date();
     const anio = hoy.getFullYear();
@@ -45,86 +53,121 @@ function establecerFechaActual() {
     const dia  = String(hoy.getDate()).padStart(2, "0");
     inputFecha.value = `${anio}-${mes}-${dia}`;
 }
-
+ 
+ 
+function mostrarError(input, elementoError, mensaje) {
+    input.classList.add("input-error");
+    if (elementoError) elementoError.textContent = mensaje;
+}
+ 
+function limpiarError(input, elementoError) {
+    input.classList.remove("input-error");
+    if (elementoError) elementoError.textContent = "";
+}
+ 
+ 
 // Resaltar campos con error
-
+ 
 function resaltarCamposVacios() {
     let error = false;
-
+ 
     // Identificación
     const cedula = inputCedula.value.trim();
     if (!validarCedula(cedula)) {
-        inputCedula.classList.add("input-error");
+        mostrarError(inputCedula, errorCedula, "La identificación debe tener 9 dígitos numéricos.");
         error = true;
     } else {
-        inputCedula.classList.remove("input-error");
+        limpiarError(inputCedula, errorCedula);
     }
-
+ 
     // Nombre
     const nombre = inputNombre.value.trim();
     if (!validarNombreCompleto(nombre)) {
-        inputNombre.classList.add("input-error");
+        mostrarError(inputNombre, errorNombre, "El nombre debe tener mínimo 3 caracteres.");
         error = true;
     } else {
-        inputNombre.classList.remove("input-error");
+        limpiarError(inputNombre, errorNombre);
     }
-
+ 
     // Correo
     const correo = inputCorreo.value.trim();
     if (!validarCorreo(correo)) {
-        inputCorreo.classList.add("input-error");
+        mostrarError(inputCorreo, errorCorreo, "Ingrese un correo electrónico válido.");
         error = true;
     } else {
-        inputCorreo.classList.remove("input-error");
+        limpiarError(inputCorreo, errorCorreo);
     }
-
+ 
     // Teléfono
     const telefono = inputTelefono.value.trim();
     if (!validarTelefono(telefono)) {
-        inputTelefono.classList.add("input-error");
+        mostrarError(inputTelefono, errorTelefono, "El teléfono debe tener entre 8 y 12 dígitos numéricos.");
         error = true;
     } else {
-        inputTelefono.classList.remove("input-error");
+        limpiarError(inputTelefono, errorTelefono);
     }
-
+ 
     // Carrera
     const carrera = inputCarrera.value;
     if (!validarCarrera(carrera)) {
-        inputCarrera.classList.add("input-error");
+        mostrarError(inputCarrera, errorCarrera, "Debe seleccionar una carrera.");
         error = true;
     } else {
-        inputCarrera.classList.remove("input-error");
+        limpiarError(inputCarrera, errorCarrera);
     }
-
+ 
     return error;
 }
-
+ 
 // Lugares de trabajo
-
-function crearBloqueLugar() {
+ 
+function crearBloqueLugar(valorInicial) {
     const bloque = document.createElement("div");
     bloque.dataset.index = contadorLugares;
-
+ 
     bloque.innerHTML = `
-        <input type="text" id="lugar-${contadorLugares}" placeholder="ej. Empresa XYZ" aria-label="Lugar de trabajo ${contadorLugares + 1}">
+        <input type="text" id="lugar-${contadorLugares}" value="${valorInicial ? valorInicial.replace(/"/g, '&quot;') : ''}" placeholder="ej. Empresa XYZ" aria-label="Lugar de trabajo ${contadorLugares + 1}">
         <button type="button" class="eliminar-lugar">Eliminar</button>
     `;
-
+ 
     // Evento para eliminar el bloque
     bloque.querySelector(".eliminar-lugar").addEventListener("click", function (e) {
         e.preventDefault();
         bloque.remove();
     });
-
+ 
     contadorLugares++;
     return bloque;
 }
-
+ 
+ 
+function obtenerEgresados() {
+    let egresados = JSON.parse(localStorage.getItem("egresados"));
+ 
+    if (egresados === null) {
+        egresados = [
+            {
+                cedula: "304790796",
+                nombre: "Mario Castro Chacon",
+                correo: "mario@gmail.com",
+                telefono: "78569825",
+                carrera: "Ingeniería en Desarrollo de Software",
+                fecha: "2026-06-26",
+                lugares: []
+            }
+        ];
+        localStorage.setItem("egresados", JSON.stringify(egresados));
+    }
+ 
+    return egresados;
+}
+ 
+ 
 // Guardar egresado en Local Storage
-
+ 
 function guardarEgresado() {
     const error = resaltarCamposVacios();
-
+ 
     if (error) {
         Swal.fire({
             title: "No se puede registrar el egresado",
@@ -134,13 +177,9 @@ function guardarEgresado() {
         });
         return;
     }
-
-    // Recuperar la lista de egresados existentes
-    let egresados = JSON.parse(localStorage.getItem("egresados"));
-    if (egresados === null) {
-        egresados = [];
-    }
-
+ 
+    let egresados = obtenerEgresados();
+ 
     // Traer lugares de trabajo agregados
     const lugaresInputs = lugaresContainer.querySelectorAll("input[type='text']");
     const lugares = [];
@@ -149,9 +188,9 @@ function guardarEgresado() {
             lugares.push(lugaresInputs[i].value.trim());
         }
     }
-
+ 
     // Crear el objeto con la información del egresado
-    const nuevoEgresado = {
+    const egresadoFormulario = {
         cedula:    inputCedula.value.trim(),
         nombre:    inputNombre.value.trim(),
         correo:    inputCorreo.value.trim(),
@@ -160,11 +199,19 @@ function guardarEgresado() {
         fecha:     inputFecha.value,
         lugares:   lugares
     };
-
-    // Agregar al arreglo y guardar en LS
-    egresados.push(nuevoEgresado);
+ 
+    let mensajeExito = "Los datos han sido guardados correctamente.";
+ 
+    if (egresadoEditando !== null) {
+        egresados[egresadoEditando] = egresadoFormulario;
+        mensajeExito = "El egresado fue actualizado correctamente.";
+    } else {
+        egresados.push(egresadoFormulario);
+    }
+ 
+    // Guardar en Local Storage
     localStorage.setItem("egresados", JSON.stringify(egresados));
-
+ 
     // Mostrar en consola todos los egresados
     console.log("Lista de egresados:");
     for (let i = 0; i < egresados.length; i++) {
@@ -178,41 +225,138 @@ function guardarEgresado() {
         console.log("Lugares: "  + egresados[i].lugares.join(", "));
         console.log("-------------------------");
     }
-
+ 
     Swal.fire({
-        title: "Egresado registrado correctamente",
-        text: "Los datos han sido guardados correctamente.",
+        title: egresadoEditando !== null ? "Egresado actualizado" : "Egresado registrado correctamente",
+        text: mensajeExito,
         icon: "success",
         confirmButtonText: "Aceptar"
     }).then(function () {
         document.querySelector("form").reset();
         lugaresContainer.innerHTML = ""; // Limpiar lugares dinámicos
         establecerFechaActual();         // Restaurar fecha actual
+        cancelarEdicionEgresado();
+        cargarEgresados();
     });
 }
-
+ 
 // Eventos
-
+ 
 establecerFechaActual();
-
+ 
 btnRegistrar.addEventListener("click", function (e) {
     e.preventDefault();
     guardarEgresado();
 });
-
+ 
 btnAgregarLugar.addEventListener("click", function (e) {
     e.preventDefault();
     const bloque = crearBloqueLugar();
     lugaresContainer.appendChild(bloque);
 });
-
+ 
+ 
+// Editar egresados
+function editarEgresado(indice) {
+    const egresados = obtenerEgresados();
+    const egresado = egresados[indice];
+ 
+    if (!egresado) return;
+ 
+    inputCedula.value = egresado.cedula;
+    inputNombre.value = egresado.nombre;
+    inputCorreo.value = egresado.correo;
+    inputTelefono.value = egresado.telefono;
+    inputCarrera.value = egresado.carrera;
+    inputFecha.value = egresado.fecha;
+ 
+    // Limpiar errores previos si los había
+    limpiarError(inputCedula, errorCedula);
+    limpiarError(inputNombre, errorNombre);
+    limpiarError(inputCorreo, errorCorreo);
+    limpiarError(inputTelefono, errorTelefono);
+    limpiarError(inputCarrera, errorCarrera);
+ 
+    // Precargar lugares de trabajo
+    lugaresContainer.innerHTML = "";
+    contadorLugares = 0;
+    if (egresado.lugares && egresado.lugares.length > 0) {
+        for (let i = 0; i < egresado.lugares.length; i++) {
+            lugaresContainer.appendChild(crearBloqueLugar(egresado.lugares[i]));
+        }
+    }
+ 
+    egresadoEditando = indice;
+    btnRegistrar.textContent = "Actualizar egresado";
+ 
+    document.querySelector("form").scrollIntoView({ behavior: "smooth" });
+}
+ 
+ 
+// Cancelar edicion
+function cancelarEdicionEgresado() {
+    egresadoEditando = null;
+    btnRegistrar.textContent = "Registrar egresado";
+}
+ 
+ 
+// Eliminar egresados
+function eliminarEgresado(indice) {
+    const egresados = obtenerEgresados();
+    const egresado = egresados[indice];
+ 
+    if (!egresado) return;
+ 
+    Swal.fire({
+        title: "¿Eliminar egresado?",
+        text: `Se eliminará a "${egresado.nombre}". Esta acción no se puede deshacer.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar"
+    }).then(function (resultado) {
+        if (resultado.isConfirmed) {
+            egresados.splice(indice, 1);
+            localStorage.setItem("egresados", JSON.stringify(egresados));
+ 
+            if (egresadoEditando === indice) {
+                document.querySelector("form").reset();
+                lugaresContainer.innerHTML = "";
+                establecerFechaActual();
+                cancelarEdicionEgresado();
+            }
+ 
+            cargarEgresados();
+ 
+            Swal.fire({
+                title: "Egresado eliminado",
+                icon: "success",
+                confirmButtonText: "Aceptar"
+            });
+        }
+    });
+}
+ 
+ 
+// Limpiar formulario
+document.querySelector(".limpiar-formulario").addEventListener("click", function () {
+    cancelarEdicionEgresado();
+    lugaresContainer.innerHTML = "";
+    limpiarError(inputCedula, errorCedula);
+    limpiarError(inputNombre, errorNombre);
+    limpiarError(inputCorreo, errorCorreo);
+    limpiarError(inputTelefono, errorTelefono);
+    limpiarError(inputCarrera, errorCarrera);
+});
+ 
+ 
 //Sobrescribir la informacion en tablas
-
+ 
 function cargarEgresados() {
-    let egresados = JSON.parse(localStorage.getItem("egresados")) || [];
+    let egresados = obtenerEgresados();
     const tbody = document.querySelector(".table tbody");
     tbody.innerHTML = ""; // Limpiar filas por defecto
-
+ 
     for (let i = 0; i < egresados.length; i++) {
         const fila = document.createElement("tr");
         fila.innerHTML = `
@@ -220,10 +364,31 @@ function cargarEgresados() {
             <td>${egresados[i].nombre}</td>
             <td>${egresados[i].correo}</td>
             <td>${egresados[i].carrera}</td>
-            <td><a href="perfil-egresado.html">Ver perfil</a></td>
+            <td>
+                <a href="Perfil-Egresado.html?cedula=${encodeURIComponent(egresados[i].cedula)}">Ver perfil</a>
+                <button type="button" class="btn-editar-egresado" data-indice="${i}">Editar</button>
+                <button type="button" class="btn-eliminar-egresado" data-indice="${i}">Eliminar</button>
+            </td>
         `;
         tbody.appendChild(fila);
     }
 }
-
+ 
+ 
+document.querySelector(".table tbody").addEventListener("click", function (e) {
+    const btnEditar = e.target.closest(".btn-editar-egresado");
+    const btnEliminar = e.target.closest(".btn-eliminar-egresado");
+ 
+    if (btnEditar) {
+        const indice = parseInt(btnEditar.dataset.indice, 10);
+        editarEgresado(indice);
+    }
+ 
+    if (btnEliminar) {
+        const indice = parseInt(btnEliminar.dataset.indice, 10);
+        eliminarEgresado(indice);
+    }
+});
+ 
+ 
 cargarEgresados();

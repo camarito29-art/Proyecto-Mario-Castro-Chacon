@@ -178,7 +178,7 @@ function guardarCarrera() {
             icon: "warning",
             confirmButtonText: "Aceptar"
         });
-        return; // Detener si errores
+        return; 
     }
 
     let carreras = obtenerCarreras();
@@ -243,6 +243,7 @@ btnRegistrarCarrera.addEventListener("click", function (e) {
 });
 
 
+// Cargar para editar
 function editarCarrera(indice) {
     const carreras = obtenerCarreras();
     const carrera = carreras[indice];
@@ -256,7 +257,6 @@ function editarCarrera(indice) {
     inputModalidad.value = carrera.modalidad;
     inputActiva.checked = carrera.activa;
 
-    // Limpiar errores previos si los había
     limpiarError(inputCodigo, errorCodigo);
     limpiarError(inputNombre, errorNombre);
     limpiarError(inputDescripcion, errorDescripcion);
@@ -266,17 +266,18 @@ function editarCarrera(indice) {
     carreraEditando = indice;
     btnRegistrarCarrera.textContent = "Actualizar carrera";
 
-    // Llevar al usuario al formulario
     document.querySelector("form").scrollIntoView({ behavior: "smooth" });
 }
 
 
+// cancelar edicion
 function cancelarEdicionCarrera() {
     carreraEditando = null;
     btnRegistrarCarrera.textContent = "Registrar carrera";
 }
 
 
+// Eliminar carrera
 function eliminarCarrera(indice) {
     const carreras = obtenerCarreras();
     const carrera = carreras[indice];
@@ -295,7 +296,6 @@ function eliminarCarrera(indice) {
             carreras.splice(indice, 1);
             localStorage.setItem("carreras", JSON.stringify(carreras));
 
-            // Cancelar edición
             if (carreraEditando === indice) {
                 document.querySelector("form").reset();
                 cancelarEdicionCarrera();
@@ -320,11 +320,20 @@ function cargarCarreras() {
 
     for (let i = 0; i < carreras.length; i++) {
         const fila = document.createElement("tr");
+
+        const modalidadTexto = carreras[i].modalidad
+            ? carreras[i].modalidad.charAt(0).toUpperCase() + carreras[i].modalidad.slice(1)
+            : "";
+
+        const activaTexto = carreras[i].activa ? "Sí" : "No";
+
         fila.innerHTML = `
             <td>${carreras[i].codigo}</td>
             <td>${carreras[i].nombre}</td>
             <td>${carreras[i].descripcion}</td>
             <td>${carreras[i].duracion}</td>
+            <td>${modalidadTexto}</td>
+            <td>${activaTexto}</td>
             <td>
                 <button type="button" class="btn-editar-carrera" data-indice="${i}">Editar</button>
                 <button type="button" class="btn-eliminar-carrera" data-indice="${i}">Eliminar</button>
@@ -357,6 +366,7 @@ document.querySelector(".table tbody").addEventListener("click", function (e) {
 });
 
 
+// Limpiar formulario
 document.querySelector(".limpiar-formulario").addEventListener("click", function () {
     cancelarEdicionCarrera();
     limpiarError(inputCodigo, errorCodigo);

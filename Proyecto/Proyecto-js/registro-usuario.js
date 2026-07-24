@@ -1,10 +1,10 @@
-const correo              = document.getElementById("correo");
-const nombreUsuario       = document.getElementById("nombre-usuario");
-const contrasennia        = document.getElementById("contrasenna");
-const iconoContrasenna    = document.getElementById("iconoContrasenna");
+const correo = document.getElementById("correo");
+const nombreUsuario = document.getElementById("nombre-usuario");
+const contrasennia = document.getElementById("contrasenna");
+const iconoContrasenna = document.getElementById("iconoContrasenna");
 const btnMostrarContrasenna = document.getElementById("btnMostrarContrasenna");
-const btnGuardarUsuario   = document.getElementById("guardar-usuario-ls");
-const formulario          = document.getElementById("formRegistro") || document.querySelector("form");
+const btnGuardarUsuario = document.getElementById("guardar-usuario-ls");
+const formulario = document.getElementById("formRegistro") || document.querySelector("form");
 
 // Mostrar / ocultar contraseña
 
