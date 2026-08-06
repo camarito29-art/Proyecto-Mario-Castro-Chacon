@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de egresado - Sistema de Gestión de Egresados CENFOTEC</title>
+
+    <link rel="stylesheet" href="/Proyecto/Front-end/Proyecto-css/generico.css">
+    <link rel="stylesheet" href="/Proyecto/Front-end/Proyecto-css/registro-usuario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="/Proyecto/Front-end/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
+
+        <nav class="navegacion-principal" aria-label="Navegación principal" class="nav">
+            <ul>
+                <li><a href="Pagina-Inicio.html">Inicio</a></li>
+                <li><a href="Gestion-Egresados.html">Gestión de egresados</a></li>
+                <li><a href="Gestion-Carreras.html">Gestión de carreras</a></li>
+                <li><a href="Inicio-Sesion.html">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+
+        <header>
+            <h2>Perfil de egresado</h2>
+            <p class="subtitulo">Información personal y profesional del egresado.</p>
+        </header>
+        <hr>
+        <i class="fa-solid fa-user" style="font-size: 100px;"></i>
+        <p class="subtitulo">Imagen de perfil</p> 
+        <!-- Datos personales -->
+        <section aria-labelledby="titulo-datos-personales">
+            <h3 id="titulo-datos-personales">Datos personales</h3>
+
+            <br>
+            <h4>Identificación:</h4>
+            <p id="perfil-identificacion">304790796</p>
+
+            <h4>Nombre completo:</h4>
+            <p id="perfil-nombre">Mario Castro Chacon</p>
+
+            <h4>Correo electrónico:</h4>
+            <p id="perfil-correo">mario@gmail.com</p>
+
+            <h4>Teléfono:</h4>
+            <p id="perfil-telefono">7856-9825</p>
+
+            <h4>Fecha de registro:</h4>
+            <p id="perfil-fecha">26 de Junio, 2026</p>
+            </br>
+        </section>
+
+        <!-- Carrera -->
+        <section aria-labelledby="titulo-carrera">
+            <h3 id="titulo-carrera">Carrera</h3>
+
+            <br>
+            <h4>Nombre de la carrera:</h4>
+            <p id="perfil-carrera">Ingeniería en Desarrollo de Software</p>
+
+            <h4>Año de graduación:</h4>
+            <p>2026</p>
+            </br>
+        </section>
+
+        <!-- Historial laboral -->
+        <section aria-labelledby="titulo-historial">
+            <h3 id="titulo-historial">Historial laboral</h3>
+            <br>
+            <div id="perfil-historial">
+                <p>Amazon</p>
+            </div>
+            </br>
+
+        </section>
+
+        <p><a href="Gestion-Egresados.html">Volver a la lista de egresados</a></p>
+
+    </main>
+    <hr>
+    <footer>
+        <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/Proyecto/Front-end/Proyecto-js/perfil-egresado.js"></script>
+
+</body>
+
+</html>

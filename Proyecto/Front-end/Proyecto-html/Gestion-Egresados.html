@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de egresados - Sistema de Gestión de Egresados CENFOTEC</title>
+
+    <link rel="stylesheet" href="/Proyecto/Front-end/Proyecto-css/generico.css">
+    <link rel="stylesheet" href="/Proyecto/Front-end/Proyecto-css/registro-usuario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+        <img class="logo" src="/Proyecto/Front-end/Assets/Cenfotec.jpg" alt="Logo de CENFOTEC">
+
+        <nav class="navegacion-principal" aria-label="Navegación principal">
+            <ul>
+                <li><a href="Pagina-Inicio.html">Inicio</a></li>
+                <li><a href="Gestion-Egresados.html">Gestión de egresados</a></li>
+                <li><a href="Gestion-Carreras.html">Gestión de carreras</a></li>
+                <li><a href="Inicio-Sesion.html">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+
+        <!-- Egresados -->
+        <section aria-labelledby="titulo-lista-egresados">
+            <header>
+                <h2 id="titulo-lista-egresados">Egresados registrados</h2>
+                <p class="subtitulo">Listado de todos los egresados en el sistema.</p>
+            </header>
+
+            <table class="table">
+                <caption>Lista de egresados registrados</caption>
+                <thead>
+                    <tr>
+                        <th>Identificación</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Carrera</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- Formulario de registro de egresado -->
+        <section aria-labelledby="titulo-registro-egresado">
+            <header>
+                <h2 id="titulo-registro-egresado">Registrar nuevo egresado</h2>
+                <p class="subtitulo">Complete todos los campos obligatorios para registrar al egresado.</p>
+            </header>
+
+            <form action="" novalidate>
+
+                <!-- Identificación -->
+                <div>
+                    <label for="identificacion">Identificación</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="text" id="identificacion" placeholder="ej. 123456789" required aria-required="true"
+                            aria-describedby="ayuda-identificacion error-identificacion">
+
+                        <span id="ayuda-identificacion" class="texto-oculto">Ingrese el número de identificación de 9
+                            dígitos.</span>
+
+                        <span id="error-identificacion" class="mensaje-error" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Nombre completo -->
+                <div>
+                    <label for="nombre-completo">Nombre completo de la persona egresada</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="text" id="nombre-completo" placeholder="ej. María Pérez" required
+                            aria-required="true" aria-describedby="ayuda-nombre error-nombre-completo">
+
+                        <span id="ayuda-nombre" class="texto-oculto">Ingrese el nombre completo (mínimo 3
+                            caracteres).</span>
+
+                        <span id="error-nombre-completo" class="mensaje-error" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Correo -->
+                <div>
+                    <label for="correo">Correo electrónico</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="email" id="correo" placeholder="egresado@dominio.com" required aria-required="true"
+                            aria-describedby="ayuda-correo error-correo">
+
+                        <span id="ayuda-correo" class="texto-oculto">Ingrese un correo electrónico válido.</span>
+
+                        <span id="error-correo" class="mensaje-error" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div>
+                    <label for="telefono">Teléfono</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="tel" id="telefono" placeholder="ej. 88888888" required aria-required="true"
+                            aria-describedby="ayuda-telefono error-telefono">
+
+                        <span id="ayuda-telefono" class="texto-oculto">Ingrese un número de teléfono de 8
+                            dígitos.</span>
+
+                        <span id="error-telefono" class="mensaje-error" role="alert"></span>
+                    </div>
+                </div>
+
+                <!-- Carrera -->
+                <div>
+                    <label for="carrera">Carrera</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <select id="carrera" required aria-required="true" aria-describedby="ayuda-carrera error-carrera">
+                            <option value="">Seleccione una carrera</option>
+                            <option value="Ingeniería en Sistemas de Información">Ingeniería en Sistemas de Información</option>
+                            <option value="Ingeniería en Desarrollo de Software">Ingeniería en Desarrollo de Software</option>
+                            <option value="Ingeniería en Redes y Telecomunicaciones">Ingeniería en Redes y Telecomunicaciones</option>
+                        </select>
+
+                        <span id="ayuda-carrera" class="texto-oculto">Seleccione la carrera que cursó el
+                            egresado.</span>
+
+                        <span id="error-carrera" class="mensaje-error" role="alert"></span>
+                    </div>
+                </div>
+                <br>
+                <!-- Fecha de registro -->
+                <div>
+                    <label for="fecha-registro">Fecha de registro</label>
+                    <span aria-hidden="true" class="label-requerido">*</span>
+
+                    <div>
+                        <input type="date" id="fecha-registro" required aria-required="true"
+                            aria-describedby="ayuda-fecha">
+
+                        <span id="ayuda-fecha" class="texto-oculto">Seleccione la fecha de registro (por defecto
+                            hoy).</span>
+                    </div>
+                </div>
+
+                <!-- Lugares de trabajo (grupo repetible) -->
+                <div>
+                    <label>Lugares de trabajo</label>
+                    <span class="label-opcional">(opcional)</span>
+
+                    <div id="lugares-container">
+                    </div>
+
+                    <button type="button" id="agregar-lugar-btn">+ Agregar lugar de trabajo</button>
+                </div>
+
+                <button type="submit" class="guardar-formulario">Registrar egresado</button>
+                <button type="reset" class="limpiar-formulario">Limpiar formulario</button>
+
+            </form>
+        </section>
+        <hr>
+    </main>
+
+
+    <footer>
+        <p>Universidad CENFOTEC &copy; 2026. Todos los derechos reservados.</p>
+    </footer>
+
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Lógica del formulario de egresados -->
+    <script src="/Proyecto/Front-end/Proyecto-js/gestion-egresados.js"></script>
+</body>
+
+</html>
